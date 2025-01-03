@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Dict
-import networkx as nx  # Use NetworkX for graph operations
+import networkx as nx  
 import json
 
 app = FastAPI()
@@ -9,7 +9,7 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace "*" with specific origins for better security
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -33,7 +33,7 @@ def parse_pipeline(pipeline: str = Form(...)):
 
         # Validate nodes
         graph = nx.DiGraph()
-        graph.add_nodes_from([node['id'] for node in nodes])  # Add only the IDs of the nodes
+        graph.add_nodes_from([node['id'] for node in nodes])  
 
         # Transform edges into (source, target) format
         transformed_edges = [(edge['source'], edge['target']) for edge in edges]
